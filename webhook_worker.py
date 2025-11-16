@@ -53,7 +53,7 @@ async def handle_webhook(request: Request):
     print(f"Provider: {provider}")
     print(f"Payload:  {body}\n")
 
-    # 1️⃣ Heartbeat: store latest overall status
+
     if event == "status.heartbeat":
         LATEST_STATUS = body
         impacted = body.get("impacted_components", [])
@@ -61,14 +61,14 @@ async def handle_webhook(request: Request):
             KNOWN_COMPONENTS.add(c)
         print(" Stored latest heartbeat.\n")
 
-    # 2️⃣ Incident updates: also learn about components from here
+
     if event == "incident.update":
         components = body.get("components", [])
         for c in components:
             KNOWN_COMPONENTS.add(c)
         print(f" Updated known components from incident.update: {components}\n")
 
-    # (optional) you could also handle "status.change" similarly
+
 
     return JSONResponse({"status": "ok"})
 
