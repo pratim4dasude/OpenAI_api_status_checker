@@ -11,6 +11,8 @@ The system consists of three components:
 3. Gradio Dashboard – displays real-time operational and incident information
 It runs 24/7 and gives you instant visibility into OpenAI API health.
 
+![img.png](img.png)
+
 ## 🚀 Features
 ### ✅ Real-time Status Monitoring
 
@@ -85,21 +87,7 @@ requests
 
 You must run two processes:
 
-### 1️⃣ Start the Webhook Worker
-```commandline
-python webhook_worker.py
-```
-
-Runs on:
-```commandline
-http://127.0.0.1:8000
-```
-
-Check health:
-```commandline
-http://127.0.0.1:8000/health
-```
-### 2️⃣ Start the RSS Watcher
+### 1️⃣ Start the RSS Watcher
 ```commandline
 python openai_status_watcher.py
 ```
@@ -163,9 +151,38 @@ Last incident update: Sat, 15 Nov 2025 08:53:03 GMT — Subset of Batch API jobs
 Current state: ✅ All systems operational (no active incidents detected).
 ➡️  Webhook sent to http://localhost:8000/webhook (event=status.heartbeat)
 ```
+
+
+### 2️⃣ Start the Webhook Worker
+```commandline
+python webhook_worker.py
+```
+
+Runs on:
+```commandline
+http://127.0.0.1:8000
+```
+
+Check health:
+```commandline
+http://127.0.0.1:8000/health
+```
+CLI console:
+```commandline
+http://127.0.0.1:8000/health
+```
+
 ### 3️⃣ Launch the Live Dashboard
 ```commandline
-python status_dashboard.py
+INFO:     127.0.0.1:64554 - "POST /webhook HTTP/1.1" 200 OK
+
+ Webhook received
+Event:    status.heartbeat
+Provider: openai
+Payload:  {'event': 'status.heartbeat', 'provider': 'openai', 'source': 'openai-status-rss', 'state': 'operational', 'status_label': 'ACTIVE', 'timestamp': '2025-11-16 21:57:10', 'last_incident_title': 'Subset of Batch API jobs stuck in finalizing state', 'last_incident_time': 'Sat, 15 Nov 2025 08:53:03 GMT', 'message': 'All systems operational (no active incidents detected).', 'impacted_components': []}
+
+ Stored latest heartbeat.
+
 ```
 
 Dashboard opens at:
