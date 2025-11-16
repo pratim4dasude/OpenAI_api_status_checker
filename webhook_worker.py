@@ -48,7 +48,7 @@ async def handle_webhook(request: Request):
     event = body.get("event", "unknown")
     provider = body.get("provider", "unknown")
 
-    print("\n📩 Webhook received")
+    print("\n Webhook received")
     print(f"Event:    {event}")
     print(f"Provider: {provider}")
     print(f"Payload:  {body}\n")
@@ -59,14 +59,14 @@ async def handle_webhook(request: Request):
         impacted = body.get("impacted_components", [])
         for c in impacted:
             KNOWN_COMPONENTS.add(c)
-        print("💾 Stored latest heartbeat.\n")
+        print(" Stored latest heartbeat.\n")
 
     # 2️⃣ Incident updates: also learn about components from here
     if event == "incident.update":
         components = body.get("components", [])
         for c in components:
             KNOWN_COMPONENTS.add(c)
-        print(f"💾 Updated known components from incident.update: {components}\n")
+        print(f" Updated known components from incident.update: {components}\n")
 
     # (optional) you could also handle "status.change" similarly
 

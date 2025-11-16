@@ -114,9 +114,54 @@ This script:
 
 Output example:
 ```commandline
-[2025-11-16 20:35:10] ACTIVE
-Current state: All systems operational.
-➡️ Webhook sent to http://localhost:8000/webhook (event=status.heartbeat)
+🔍 OpenAI Status RSS Watcher (Webhook-enabled)
+🌐 Source: https://status.openai.com/history.rss
+⏱ Refreshing every 10 seconds…
+Press CTRL+C to exit.
+
+Initialized watcher. Existing 94 incidents marked as seen.
+
+📌 INITIAL STATUS CHECK
+-------------------------
+Monitoring OpenAI services (discovered from RSS):
+- Agent
+- Audio
+- Batch
+- Chat Completions
+- ChatGPT Atlas
+- Codex
+- Compliance API
+- Connectors
+- Conversations
+- Deep Research
+- Embeddings
+- Feed
+- File uploads
+- Files
+- Fine-tuning
+- GPTs
+- Image Generation
+- Images
+- Login
+- Moderations
+- Realtime
+- Responses
+- Search
+- Sora
+- Video generation
+- Video viewing
+- Voice mode
+
+Last incident update: Sat, 15 Nov 2025 08:53:03 GMT — Subset of Batch API jobs stuck in finalizing state
+Current state: ✅ All systems operational
+
+✔️ Live monitoring + webhook dispatch started...
+-----------------------------------------------
+
+[2025-11-16 21:53:56] ACTIVE
+Last incident update: Sat, 15 Nov 2025 08:53:03 GMT — Subset of Batch API jobs stuck in finalizing state
+Current state: ✅ All systems operational (no active incidents detected).
+➡️  Webhook sent to http://localhost:8000/webhook (event=status.heartbeat)
 ```
 ### 3️⃣ Launch the Live Dashboard
 ```commandline
