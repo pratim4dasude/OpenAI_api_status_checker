@@ -6,7 +6,7 @@ It detects outages, degradations, and service impacts across models like GPTs, C
 
 The system consists of three components:
 
-1. RSS Watcher – polls OpenAI's RSS feed and sends webhook events
+1. RSS Watcher – polls OpenAI's RSS feed and sends webhook events (https://status.openai.com/ )
 2. Webhook Worker (FastAPI) – receives events and stores the latest status
 3. Gradio Dashboard – displays real-time operational and incident information
 It runs 24/7 and gives you instant visibility into OpenAI API health.
